@@ -1,3 +1,9 @@
+# Overview
+
+App's main screen
+
+![Main screen](./src/assets/overview00.png)
+
 # Create an Angular app
 
 You need to have installed Angular CLI: `npm install -g @angular/cli`
