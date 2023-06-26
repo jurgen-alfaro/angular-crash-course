@@ -1,27 +1,62 @@
-# AngularCrashCourse
+# Create an Angular app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
+You need to have installed Angular CLI: `npm install -g @angular/cli`
 
-## Development server
+To create the app run: `ng new <app_name>`
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Create a Component
 
-## Code scaffolding
+To create a component run: `ng generate component <component_name>`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The components should be within a `components` folder in the main/root folder of the project.
 
-## Build
+# Loop through an array in a Component
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To loop through an array and display its data in a component:
 
-## Running unit tests
+1. Import the array in the <comp_name>.component.ts
+   `import { Task } from '../../interfaces/Task'
+`import { TASKS } from '../../mock-tasks';`
+2. Create a variable typed to the interface:
+   `tasks: Task[] = TASKS`
+3. Loop through in the <comp_name>.component.html file:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```html
+<p *ngFor="let task of tasks">  {{ task.text }}</p>
+```
 
-## Running end-to-end tests
+# Add Font Awesome to the project
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+To add Font Awesome to the project run: `ng add @fortawesome/angular-fontawesome`
+Then choose the **Free** options in the CLI.
+Check this link: https://github.com/FortAwesome/angular-fontawesome
 
-## Further help
+# Create a Service
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Services are typically used to handle tasks such as fetching and updating data, performing calculations, sharing state, and coordinating the communication between different parts of an application.
+
+To create a service run: `ng generate service <service_name>`
+
+Create a `services` folder within the app folder.
+
+# Two-way binding form data
+
+Two-way binding in Angular allows for synchronization of data between the component and the view. It enables automatic updates in both directions, meaning changes made in the view are reflected in the component, and changes made in the component are reflected in the view.
+
+Example:
+
+```html
+<input type="text" name="text" id="text" placeholder="Add Task" [(ngModel)]="text" <==== />
+```
+
+In your `component.ts` file:
+
+```typescript
+export class AddTaskComponent implements OnInit {
+  text!: string; // <======= This is the "text" variable that is being referenced in the html
+  day!: string;
+  reminder: boolean = false;
+
+  ngOnInit(): void {}
+}
+```
